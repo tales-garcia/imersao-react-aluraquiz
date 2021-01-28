@@ -1,10 +1,17 @@
+import React from 'react';
 import styled from 'styled-components';
 
-import React from 'react';
+const Container = styled.svg`
+  margin: auto;
+  display: block;
+  @media screen and (max-width: 500px) {
+    margin: 0;
+  }
+`;
 
-function Logo() {
+function QuizLogo() {
     return (
-        <svg width="135" height="67" viewBox="0 0 135 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <Container width="135" height="67" viewBox="0 0 135 67" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0)">
                 <mask id="path-1-outside-1" maskUnits="userSpaceOnUse" x="2" y="2" width="110" height="50" fill="black">
                     <rect fill="white" x="2" y="2" width="110" height="50" />
@@ -24,16 +31,8 @@ function Logo() {
                     <rect width="134.373" height="67" fill="white" />
                 </clipPath>
             </defs>
-        </svg>
+        </Container>
     );
 }
-
-const QuizLogo = styled(Logo)`
-  margin: auto;
-  display: block;
-  @media screen and (max-width: 500px) {
-    margin: 0;
-  }
-`;
 
 export default QuizLogo;
