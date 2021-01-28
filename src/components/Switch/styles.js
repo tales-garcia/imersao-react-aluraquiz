@@ -10,6 +10,7 @@ export const Container = styled.ul`
 
 export const Option = styled.li`
     background-color: ${({ active, theme }) => active ? theme.colors.secondary : 'rgba(63, 81, 181, 0.2)'};
+    transition: opacity .3s;
 
     ${({ wrong }) => wrong && css`
         background-color: ${({ theme }) => theme.colors.wrong};
@@ -25,5 +26,8 @@ export const Option = styled.li`
 
     & + li {
         margin-top: 8px;
+    }
+    &:hover {
+        opacity: 0.6;
     }
 `;
