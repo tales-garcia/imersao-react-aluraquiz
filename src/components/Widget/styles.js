@@ -18,6 +18,11 @@ export const Container = styled.section`
         font-weight: 400;
         line-height: 1;
     }
+    img {
+        width: 100%;
+        max-height: 150px;
+        object-fit: cover;
+    }
 `;
 
 Container.Header = styled.header`
@@ -32,7 +37,7 @@ Container.Header = styled.header`
     }
 `;
 
-Container.Content = styled.header`
+Container.Content = styled.div`
     padding: 24px 32px 32px 32px;
     & > *:first-child {
         margin-top: 0;
