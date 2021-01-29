@@ -19,12 +19,31 @@ const QuizContainer = styled.div`
   }
 `;
 
+const QuizLink = styled.div`
+  width: 100%;
+  border: 0;
+  background-color: ${({ theme }) => theme.colors.primary}70;
+  transition: opacity .3s;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  padding: 10px 20px;
+  color: ${({ theme }) => theme.colors.contrastText};
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  * + & {
+    margin-top: 8px;
+  }
+`;
+
 const Input = styled.input`
   width: 100%;
   color: ${({ theme }) => theme.colors.contrastText};
   font-size: 18px;
   border-radius: ${({ theme }) => theme.borderRadius};
-  border: 1px solid #6200EE;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
   padding: 10px 20px;
   background-color: ${({ theme }) => theme.colors.mainBg};
 
@@ -67,7 +86,22 @@ export default function Home() {
         </Widget>
         <Widget>
           <h1>Quizes da galera</h1>
-          <p>Lorem ipsum dolor sit amet...</p>
+          {db.external.map(link => {
+            const [projectName, username] = link
+            .replace('https://', '')
+            .replace(/\//g, '')
+            .replace('.vercel.app', '')
+            .split('.');
+
+            return (
+              <QuizLink
+                onClick={() => router.push(`/quiz/${!!username ? username : ''}_${projectName}`)}
+                key={`${username}_${projectName}`}
+              >
+                {`${!!username ? username + '/' : ''}${projectName}`}
+              </QuizLink>
+            )
+          })}
         </Widget>
         <Footer />
       </QuizContainer>
