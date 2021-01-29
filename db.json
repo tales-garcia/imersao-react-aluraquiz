@@ -1,67 +1,143 @@
 {
-    "bg": "https://i2.wp.com/css-tricks.com/wp-content/uploads/2017/06/css-is-awesome-scaled.jpg?resize=1536%2C1208&ssl=1",
-    "title": "Quiz CSS da Alura",
-    "description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
-    "questions": [
-      {
-        "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-        "title": "Como fazer um seletor por id via CSS?",
-        "description": "Essa é pra aquecer",
-        "answer": 2,
-        "alternatives": [
-          ".elemento",
-          "*elemento",
-          "#elemento",
-          "%elemento"
-        ]
-      },
-      {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-        "title": "Como fazer um background gradiente com css?",
-        "description": "Faz tempo em haha",
-        "answer": 0,
-        "alternatives": [
-           "background: linear-gradient(#e66465, #9198e5);",
-           "background: gradient(#e66465, #9198e5);"
-        ]
-      },
-      {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-        "title": "Como configurar uma imagem da tag img cobrir o elemento?",
-        "description": "",
-        "answer": 1,
-        "alternatives": [
-          "background-position: cover;",
-          "object-fit: cover;",
-          "object-cover: fit;",
-          "background-size: cover;"
-        ]
-      },
-      {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-        "title": "Como configurar o estilo da scrollbar?",
-        "description": "Essa é mais difícil",
-        "answer": 3,
-        "alternatives": [
-           ":-webkit-scrollbar",
-           "::scrollbar",
-           ":scrollbar",
-           "::-webkit-scrollbar"
-        ]
-      }
-    ],
-    "external": [
-      ""
-    ],
-    "theme": {
-      "colors": {
-        "primary": "#0d47a1",
-        "secondary": "#29b6f6",
-        "mainBg": "#171B35",
-        "contrastText": "#FFFFFF",
-        "wrong": "#FF5722",
-        "success": "#4CAF50"
-      },
-      "borderRadius": "4px"
+  "bg": "https://miro.medium.com/max/4000/0*hhdjdEgUL_lT60VS.png",
+  "title": "Quiz Typescript",
+  "description": "Quiz de typescript AVANÇADO",
+  "questions": [
+    {
+      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
+      "title": "Como declarar uma interface?",
+      "description": "Se liga, é bem fácil",
+      "answer": 2,
+      "alternatives": [
+        "public interface {}",
+        "const Interface = interface {}",
+        "interface Interface {}",
+        "interface Interface = {}"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+      "title": "Qual a extensão certa para um arquivo de declaração?",
+      "description": "Só para aquecer",
+      "answer": 0,
+      "alternatives": [
+        "nomeDoArquivo.d.ts",
+        "nomeDoArquivo.ts",
+        "nomeDoArquivo.dec.ts",
+        "nomeDoArquivo.tsd"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+      "title": "Como declarar um tipo em um arquivo de declaração?",
+      "description": "Se prepara que essa ainda é fácil",
+      "answer": 3,
+      "alternatives": [
+        "export type tipo = {}",
+        "type Tipo = {}",
+        "type Tipo {}",
+        "declare type Tipo = {}"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif",
+      "title": "Como receber parâmetros generic em um type?",
+      "description": "Para amadores",
+      "answer": 1,
+      "alternatives": [
+        "type Tipo<T as string>",
+        "type Tipo<T extends string>",
+        "type Tipo<T implements String>",
+        "type Tipo<T: string>"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
+      "title": "Como declarar um type iterável por string?",
+      "description": "Essa você já deve saber",
+      "answer": 2,
+      "alternatives": [
+        "type Tipo = { (key extends string): any; }",
+        "type Tipo = { [key extends string]: any; }",
+        "type Tipo = { [key: string]: any; }",
+        "type Tipo = { string: any; }"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif",
+      "title": "Como dizer que a key é um valor generic?",
+      "description": "Nível mediano",
+      "answer": 2,
+      "alternatives": [
+        "type Tipo<T extends string> { [key extends T]: any }",
+        "type Tipo<T extends string> { [key: T]: any }",
+        "type Tipo<T extends string> { [key in T]: any }",
+        "type Tipo<T extends string> { (key: T): any }"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/l2JeblbdfRL0i2qOI/giphy.gif",
+      "title": "Como declarar um módulo em um arquivo de declaração?",
+      "description": "Quem já espiou um arquivo de declaração já sabe.",
+      "answer": 3,
+      "alternatives": [
+        "export default module 'module';",
+        "export module = 'module';",
+        "declare namespace 'module' = {};",
+        "declare module 'module';"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/kigfYxdEa5s1ziA2h1/giphy.gif",
+      "title": "Como se declara uma key opcional em uma interface?",
+      "description": "Essa é fácil",
+      "answer": 0,
+      "alternatives": [
+        "{ key?: any; }",
+        "{ [key: partial]: any; }",
+        "{ (key: partial): any; }",
+        "{ key: any?; }"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/RNWkmkrpvW6t7em1mD/giphy.gif",
+      "title": "Qual é uma ferramenta do Typescript para excluir um chave?",
+      "description": "Tem que lembrar",
+      "answer": 1,
+      "alternatives": [
+        "Partial<Tipo, \"key\">",
+        "Omit<Tipo, \"key\">",
+        "Exclude<Tipo, \"key\">",
+        "Partial\"key\">"
+      ]
+    },
+    {
+      "image": "https://i.ibb.co/1fLynFx/Captura-de-Tela-2021-01-29-a-s-18-57-03.png",
+      "title": "Agora para finalizar: Se declararmos um objeto com esse tipo qual será seu formato?",
+      "description": "const object: Tipo<object, \"key1\" | \"key2\", string | number>",
+      "answer": 1,
+      "alternatives": [
+        "{ key1: string, key2: number }",
+        "{ key1: string | number, key2: string | number }",
+        "{ key1: any, key2: any }",
+        "{ key1: string | number, key2: any }"
+      ]
     }
+  ],
+  "external": [
+    "https://react-immersion-quiz.vercel.app",
+    "https://typequiz.caducarvalho.vercel.app",
+    "https://you-dont-know-js-quiz.vercel.app"
+  ],
+  "theme": {
+    "colors": {
+      "primary": "#177acb",
+      "secondary": "#008cc1",
+      "mainBg": "#3d3d3d",
+      "contrastText": "#FFFFFF",
+      "wrong": "#FF5722",
+      "success": "#4CAF50"
+    },
+    "borderRadius": "4px"
   }
+}
