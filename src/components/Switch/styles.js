@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import db from '../../../db.json';
 
 export const Container = styled.ul`
     width: 100%;
@@ -9,7 +8,7 @@ export const Container = styled.ul`
 `;
 
 export const Option = styled.li`
-    background-color: ${({ active, theme }) => active ? theme.colors.secondary : 'rgba(63, 81, 181, 0.2)'};
+    background-color: ${({ active, theme }) => active ? theme.colors.secondary : theme.colors.primary + '70'};
     transition: opacity .3s;
 
     ${({ wrong }) => wrong && css`
@@ -20,7 +19,7 @@ export const Option = styled.li`
         background-color: ${({ theme }) => theme.colors.success};
     `}
 
-    border-radius: ${db.theme.borderRadius};
+    border-radius: ${({ theme }) => theme.borderRadius};
     padding: 10px 20px;
     cursor: pointer;
 
