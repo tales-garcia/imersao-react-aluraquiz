@@ -7,6 +7,7 @@ import GithubCorner from '../src/components/GithubCorner';
 import Widget from '../src/components/Widget';
 import { useRouter } from 'next/router';
 import Button from '../src/components/Button';
+import Link from '../src/components/Link';
 
 const QuizContainer = styled.div`
   width: 100%;
@@ -19,8 +20,10 @@ const QuizContainer = styled.div`
   }
 `;
 
-const QuizLink = styled.div`
+const QuizLink = styled(Link)`
   width: 100%;
+  display: block;
+  text-decoration: none;
   border: 0;
   background-color: ${({ theme }) => theme.colors.primary}70;
   transition: opacity .3s;
@@ -95,7 +98,8 @@ export default function Home() {
 
             return (
               <QuizLink
-                onClick={() => router.push(`/quiz/${!!username ? username : ''}_${projectName}`)}
+                href={`/quiz/${!!username ? username : ''}_${projectName}`}
+                // onClick={() => router.push(`/quiz/${!!username ? username : ''}_${projectName}`)}
                 key={`${username}_${projectName}`}
               >
                 {`${!!username ? username + '/' : ''}${projectName}`}
