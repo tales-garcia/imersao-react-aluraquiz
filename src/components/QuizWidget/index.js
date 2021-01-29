@@ -1,12 +1,13 @@
 import React from 'react';
 import Switch from '../../../src/components/Switch';
 import Widget from '../../../src/components/Widget';
-import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import BackLinkArrow from '../BackLinkArrow';
 
-const GoBack = styled.span`
-  margin-right: 12px;
+const GoBack = styled(BackLinkArrow)`
+  margin-right: 16px;
   cursor: pointer;
+  text-align: center;
 `;
 
 const Result = styled.li`
@@ -31,7 +32,6 @@ const Result = styled.li`
 `;
 
 export default function QuizWidget({ db }) {
-    const { back } = useRouter();
     const [selected, setSelected] = React.useState(undefined);
     const [loading, setLoading] = React.useState(true);
     const [question, setQuestion] = React.useState(0);
@@ -57,7 +57,7 @@ export default function QuizWidget({ db }) {
                     <>
                         {db.questions[question] ? (
                             <>
-                                <GoBack onClick={back}>{"<"}</GoBack>
+                                <GoBack href='/' />
                                 Pergunta {question + 1} de {db.questions.length}
                             </>
                         ) : (
