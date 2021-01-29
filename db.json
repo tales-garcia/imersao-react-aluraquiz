@@ -24,6 +24,30 @@
            "background: linear-gradient(#e66465, #9198e5);",
            "background: gradient(#e66465, #9198e5);"
         ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Como configurar uma imagem da tag img cobrir o elemento?",
+        "description": "",
+        "answer": 1,
+        "alternatives": [
+          "background-position: cover;",
+          "object-fit: cover;",
+          "object-cover: fit;",
+          "background-size: cover;"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Como configurar o estilo da scrollbar?",
+        "description": "Essa é mais difícil",
+        "answer": 3,
+        "alternatives": [
+           ":-webkit-scrollbar",
+           "::scrollbar",
+           ":scrollbar",
+           "::-webkit-scrollbar"
+        ]
       }
     ],
     "external": [
