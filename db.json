@@ -113,7 +113,7 @@
     },
     {
       "image": "https://i.ibb.co/1fLynFx/Captura-de-Tela-2021-01-29-a-s-18-57-03.png",
-      "title": "Agora para finalizar: Se declararmos um objeto com esse tipo qual será seu formato?",
+      "title": "Agora para finalizar: Se declararmos um objeto com o tipo acima qual será seu formato?",
       "description": "const object: Tipo<object, \"key1\" | \"key2\", string | number>",
       "answer": 1,
       "alternatives": [
