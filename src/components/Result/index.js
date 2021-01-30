@@ -43,6 +43,7 @@ export default function Result({ data, questionNumber, question }) {
                             <Alternative
                                 anwsered={index === data.anwser}
                                 custom={index}
+                                correct={question.answer === index}
                                 key={index}
                                 variants={{
                                     shown: custom => ({
