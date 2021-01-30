@@ -39,6 +39,7 @@ Container.Header = styled.header`
 
 Container.Content = styled.div`
     padding: 24px 32px 32px 32px;
+    position: relative;
     & > *:first-child {
         margin-top: 0;
     }
