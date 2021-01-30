@@ -8,6 +8,7 @@ import Widget from '../src/components/Widget';
 import { useRouter } from 'next/router';
 import Button from '../src/components/Button';
 import Link from '../src/components/Link';
+import { motion } from 'framer-motion';
 
 const QuizContainer = styled.div`
   width: 100%;
@@ -20,7 +21,7 @@ const QuizContainer = styled.div`
   }
 `;
 
-const QuizLink = styled(Link)`
+const QuizLink = styled(motion.custom(Link))`
   width: 100%;
   display: block;
   text-decoration: none;
@@ -74,7 +75,9 @@ export default function Home() {
     <QuizBackground backgroundImage={db.bg} >
       <QuizContainer>
         <QuizLogo />
-        <Widget title={db.title}>
+        <Widget
+          title={db.title}
+        >
           <p>{db.description}</p>
           <form onSubmit={handleSubmit}>
             <Input
@@ -87,7 +90,9 @@ export default function Home() {
             </Button>
           </form>
         </Widget>
-        <Widget>
+        <Widget
+          transition={{ delay: 0.5, duration: 0.4 }}
+        >
           <h1>Quizes da galera</h1>
           {db.external.map(link => {
             const [projectName, username] = link
@@ -98,8 +103,9 @@ export default function Home() {
 
             return (
               <QuizLink
+                transition={{ duration: 0.2 }}
+                whileHover={{ scale: 1.05 }}
                 href={`/quiz/${!!username ? username : ''}_${projectName}`}
-                // onClick={() => router.push(`/quiz/${!!username ? username : ''}_${projectName}`)}
                 key={`${username}_${projectName}`}
               >
                 {`${!!username ? username + '/' : ''}${projectName}`}
