@@ -50,4 +50,8 @@ Container.Content = styled.div`
         list-style: none;
         padding: 0;
     }
+
+    > div > svg > g > g:first-child > g > path {
+        fill: transparent;
+    }
 `;

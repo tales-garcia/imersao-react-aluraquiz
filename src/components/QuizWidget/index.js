@@ -3,6 +3,8 @@ import Switch from '../../../src/components/Switch';
 import Widget from '../../../src/components/Widget';
 import styled from 'styled-components';
 import BackLinkArrow from '../BackLinkArrow';
+import loading from '../../assets/lotties/loading.json';
+import Lottie from 'react-lottie';
 import { AnimateSharedLayout, motion, useAnimation } from 'framer-motion';
 import Result from '../Result';
 
@@ -17,6 +19,16 @@ const NextQuestion = styled(motion.div)`
     top: 24px;
     width: calc(100% - 64px);
 `;
+
+const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loading,
+    rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice"
+    }
+};
+
 
 export default function QuizWidget({ db }) {
     const [selected, setSelected] = React.useState(undefined);
@@ -48,7 +60,7 @@ export default function QuizWidget({ db }) {
     }, [question, selected, setQuestion, setSelected, setResults]);
 
     React.useEffect(() => {
-        setTimeout(() => setLoading(false), 2000);
+        setTimeout(() => setLoading(false), 5000);
     }, []);
 
     React.useEffect(() => {
@@ -57,7 +69,11 @@ export default function QuizWidget({ db }) {
 
     return loading ? (
         <Widget title="Carregando...">
-            Carregando...
+            <Lottie
+                options={defaultOptions}
+                height={150}
+                width={150}
+            />
         </Widget>
     ) : (
             <Widget
