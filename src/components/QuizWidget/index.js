@@ -7,6 +7,7 @@ import loading from '../../assets/lotties/loading.json';
 import Lottie from 'react-lottie';
 import { AnimateSharedLayout, motion, useAnimation } from 'framer-motion';
 import Result from '../Result';
+import { useRouter } from 'next/router';
 
 const GoBack = styled(BackLinkArrow)`
   margin-right: 16px;
@@ -34,10 +35,13 @@ export default function QuizWidget({ db }) {
     const [selected, setSelected] = React.useState(undefined);
     const [loading, setLoading] = React.useState(true);
     const [question, setQuestion] = React.useState(0);
+    const { nickname } = useRouter().query;
     const [results, setResults] = React.useState([]);
     const questionControl = useAnimation();
     const ref = React.useRef(null);
     const ref2 = React.useRef(null);
+
+
 
     const goToNextQuestion = React.useCallback(async () => {
         await questionControl.start('go');
@@ -141,7 +145,7 @@ export default function QuizWidget({ db }) {
                     </>
                 ) : (
                         <>
-                            <p>Você acertou {results.filter(result => result.correct).length} de {db.questions.length} questões!</p>
+                            <p>{!!nickname && `Parabéns ${nickname}! `}Você acertou {results.filter(result => result.correct).length} de {db.questions.length} questões!</p>
                             <ul>
                                 <AnimateSharedLayout>
                                     {results.map((result, index) => (
