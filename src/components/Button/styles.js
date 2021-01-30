@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Container = styled.button`
+export const Container = styled(motion.button)`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.secondary};
   border: 0;
