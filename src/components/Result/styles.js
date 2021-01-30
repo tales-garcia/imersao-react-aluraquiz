@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 
 export const Container = styled(motion.li)`
@@ -34,6 +34,14 @@ export const Alternative = styled(motion.li)`
     display: block;
     padding: 10px 20px;
     background-color: ${({ theme }) => theme.colors.primary}70;
+
+    ${({ theme, correct }) => (correct !== undefined && correct) && css`
+        background-color: ${theme.colors.success}
+    `};
+    ${({ theme, correct, anwsered }) => (correct !== undefined && !correct && anwsered) && css`
+        background-color: ${theme.colors.wrong}
+    `};
+
     border: 2px solid ${({ theme, anwsered }) => anwsered ? theme.colors.contrastText : theme.colors.mainBg};
     border-radius: ${({ theme }) => theme.borderRadius};
 
