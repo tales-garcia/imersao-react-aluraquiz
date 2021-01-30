@@ -37,6 +37,7 @@ export default function Result({ data, questionNumber, question }) {
                     exit={{ height: 0 }}
                 >
                     <h4>{question.title}</h4>
+                    <p>{question.description}</p>
                     <ul>
                         {question.alternatives.map((alternative, index) => (
                             <Alternative
