@@ -108,7 +108,7 @@
         "Partial<Tipo, \"key\">",
         "Omit<Tipo, \"key\">",
         "Exclude<Tipo, \"key\">",
-        "Partial\"key\">"
+        "Partial<\"key\">"
       ]
     },
     {
