@@ -141,7 +141,7 @@ export default function QuizWidget({ db }) {
                     </>
                 ) : (
                         <>
-                            <p>Você acertou {results.filter(result => result).length} de {db.questions.length} questões!</p>
+                            <p>Você acertou {results.filter(result => result.correct).length} de {db.questions.length} questões!</p>
                             <ul>
                                 <AnimateSharedLayout>
                                     {results.map((result, index) => (
