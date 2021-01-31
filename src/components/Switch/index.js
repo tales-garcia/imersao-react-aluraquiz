@@ -12,7 +12,6 @@ export default function Switch({ alternatives, selected, setSelected, correct, g
 
         await sleep(3000);
 
-        setSubmited(false);
         goToNextQuestion();
     }, [goToNextQuestion]);
 
@@ -22,6 +21,7 @@ export default function Switch({ alternatives, selected, setSelected, correct, g
 
     React.useEffect(() => {
         control.set('hidden');
+        setSubmited(false);
         control.start('shown');
     }, [alternatives]);
 
