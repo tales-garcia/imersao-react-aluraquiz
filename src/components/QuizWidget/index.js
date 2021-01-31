@@ -4,8 +4,6 @@ import Widget from '../../../src/components/Widget';
 import styled from 'styled-components';
 import BackLinkArrow from '../BackLinkArrow';
 import loading from '../../assets/lotties/loading.json';
-import wrong from '../../assets/lotties/wrong.json';
-import correct from '../../assets/lotties/correct.json';
 import Lottie from 'react-lottie';
 import { AnimateSharedLayout, motion, useAnimation } from 'framer-motion';
 import Result from '../Result';
@@ -16,13 +14,11 @@ const GoBack = styled(BackLinkArrow)`
   cursor: pointer;
   text-align: center;
 `;
-
 const NextQuestion = styled(motion.div)`
     position: absolute;
     top: 24px;
     width: calc(100% - 64px);
 `;
-
 const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -31,25 +27,6 @@ const defaultOptions = {
         preserveAspectRatio: "xMidYMid slice"
     }
 };
-
-const correctOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: correct,
-    rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice"
-    }
-};
-
-const wrongOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: wrong,
-    rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice"
-    }
-};
-
 export default function QuizWidget({ db }) {
     const [selected, setSelected] = React.useState(undefined);
     const [loading, setLoading] = React.useState(true);
@@ -57,41 +34,34 @@ export default function QuizWidget({ db }) {
     const { nickname } = useRouter().query;
     const [results, setResults] = React.useState([]);
     const questionControl = useAnimation();
-    const answerControl = useAnimation();
+    const ref = React.useRef(null);
+    const ref2 = React.useRef(null);
 
 
 
     const goToNextQuestion = React.useCallback(async () => {
+        await questionControl.start('go');
+        questionControl.set('come');
         setResults([...results, {
             correct: db.questions[question].answer === selected,
             anwser: selected
         }]);
-        answerControl.set('right');
-        await Promise.all([
-            answerControl.start('come'),
-            questionControl.start('go')
-        ]);
-
-        await sleep(1000);
-        answerControl.set('come');
-        answerControl.start('go');
-
         setQuestion(question + 1);
         setSelected(undefined);
-
+        if (ref2.current) {
+            ref2.current.style.opacity = 1;
+            ref2.current.style.transform = 'unset';
+        }
+        if (ref.current) {
+            ref.current.style.visibility = 'hidden';
+        }
     }, [question, selected, setQuestion, setSelected, setResults]);
-
-    const sleep = React.useCallback(ms => new Promise(resolve => setTimeout(resolve, ms)));
-
     React.useEffect(() => {
         setTimeout(() => setLoading(false), 5000);
     }, []);
-
     React.useEffect(() => {
-        questionControl.set('right');
-        questionControl.start('come');
+        questionControl.set('come');
     }, [question]);
-
     return loading ? (
         <Widget title="Carregando...">
             <Lottie
@@ -126,6 +96,7 @@ export default function QuizWidget({ db }) {
                             }}
                             initial={!!question && "right"}
                             animate={questionControl}
+                            ref={ref2}
                             transition={{ delay: 0.3, duration: 0.6 }}
                         >
                             <h3>{db.questions[question].title}</h3>
@@ -138,21 +109,27 @@ export default function QuizWidget({ db }) {
                                 goToNextQuestion={goToNextQuestion}
                             />
                         </motion.div>
-                        {!!results.length && (
+                        {!!db.questions[question + 1] && (
                             <NextQuestion
                                 variants={{
-                                    come: { x: '0%' },
-                                    right: { x: '120%' },
-                                    go: { x: '-120%' }
+                                    come: { x: 'calc(100% + 32px)', opacity: 0 },
+                                    right: { x: '200%', opacity: 0 },
+                                    go: { x: '0%', opacity: 1, visibility: 'unset' }
                                 }}
+                                ref={ref}
                                 initial="right"
-                                animate={answerControl}
+                                animate={questionControl}
                                 transition={{ delay: 0.3, duration: 0.6 }}
                             >
-                                <Lottie
-                                    options={!results[question] ? results[question-1].correct ? correctOptions : wrongOptions
-                                    :
-                                    results[question].correct ? correctOptions : wrongOptions}
+                                <h3>{db.questions[question + 1].title}</h3>
+                                <p>{db.questions[question + 1].description}</p>
+                                <Switch
+                                    alternatives={db.questions[question + 1].alternatives}
+                                    correct={db.questions[question + 1].answer}
+                                    selected={undefined}
+                                    style={{ visibility: 'hidden' }}
+                                    setSelected={setSelected}
+                                    goToNextQuestion={goToNextQuestion}
                                 />
                             </NextQuestion>
                         )}
